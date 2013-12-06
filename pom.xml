@@ -6,6 +6,11 @@
 	<packaging>jar</packaging>
 	<version>2.3-SNAPSHOT</version>
 
+	<scm>
+		<connection>scm:svn:http://svn-code.devexperts.com/code/usages/trunk</connection>
+		<developerConnection>scm:svn:http://svn-code.devexperts.com/coderw/usages/trunk</developerConnection>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
