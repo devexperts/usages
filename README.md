@@ -22,8 +22,8 @@ about usages.
 Analyzes all jar files looking for deprecated members of api jar files that are used from outside of them.
 The results of this analysis are written to "api.txt" file.
 
-Here <usage-jar-files> and <api-jar-files> can use wildcard like "lib\\\*.jar".
-Use "\*\*" at the last level to scan subdirectories, like "lib\*\*.jar".
+Here <usage-jar-files> and <api-jar-files> can use wildcard like "lib/\*.jar".
+Use "\*\*" at the last level to scan subdirectories, like "lib/\*\*.jar".
 Zip files with nested zip and jar files are supported and are recursively analyzed.
 The "usages.zip" file that is produced by the tool can be used in <usage-jar-files>
 as a compact source of information about usages.
