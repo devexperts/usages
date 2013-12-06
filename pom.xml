@@ -3,7 +3,7 @@
 	<groupId>com.devexperts.usages</groupId>
 	<artifactId>usages</artifactId>
 	<packaging>jar</packaging>
-	<version>2.3-SNAPSHOT</version>
+	<version>2.2-SNAPSHOT</version>
 
 	<scm>
 		<connection>scm:svn:http://svn-code.devexperts.com/code/usages/trunk</connection>
@@ -85,10 +85,6 @@
 
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
-				<inherited>true</inherited>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
 				<!-- deploy to SVN does via wagon not work without explicitly declared dependencies -->
 				<dependencies>
 					<dependency>
