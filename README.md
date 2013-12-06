@@ -8,6 +8,16 @@ information from a number of projects and then use this collected usages informa
 being used in those projects. 
 Deprecated members that are safe to remove from the library can be automatically identified by the tool. 
 
+Download
+--------
+
+Download binary of the latest release 2.2 here:
+
+http://svn-code.devexperts.com/coderw/usages/releases/com/devexperts/usages/usages/2.2/usages-2.2.jar
+
+Usage
+-----
+
 Use this tool in one of the following ways:
 
     java -jar usages.jar <usage-jar-files>
