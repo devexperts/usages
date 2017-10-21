@@ -1,0 +1,63 @@
+ext {
+    maven_wagon_version = "2.9"
+}
+
+dependencies {
+    compile project(":api")
+    // Dependencies for maven repository indexing
+    compile "org.apache.maven.wagon:wagon-provider-api:$maven_wagon_version"
+    compile "org.apache.maven.wagon:wagon-http-lightweight:$maven_wagon_version"
+    compile "org.apache.maven.indexer:indexer-core:5.1.0"
+    compile "org.apache.maven:maven-aether-provider:3.3.9"
+    compile "org.eclipse.sisu:org.eclipse.sisu.plexus:0.3.3"
+    compile "com.google.inject:guice:4.1.0"
+    compile(project(path: ":aether-shaded", configuration: "shadow")) { transitive = false }
+    // For TimePeriod class
+    compile "com.devexperts.qd:dxlib:$dxlib_version"
+    // Database
+    compile "com.h2database:h2:1.4.195"
+    compile 'org.jetbrains.exposed:exposed:0.8.5'
+    // XML parsing
+    compile 'org.simpleframework:simple-xml:2.7.1'
+    // Configuration framework
+    compile 'org.aeonbits.owner:owner:1.0.8'
+    // Dependencies from shaded aether-shaded module
+    compileOnly "org.apache.maven:maven-aether-provider:3.3.9"
+    compileOnly "org.eclipse.aether:aether-api:$aether_version"
+    compileOnly "org.eclipse.aether:aether-util:$aether_version"
+    compileOnly "org.eclipse.aether:aether-transport-file:$aether_version"
+    compileOnly "org.eclipse.aether:aether-transport-http:$aether_version"
+    compileOnly "org.eclipse.aether:aether-connector-basic:$aether_version"
+    // Spring Boot & Web-Socket API
+    compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+    // ASM library for analyzer
+    compile "org.ow2.asm:asm:6.0"
+    // Test libs
+    testCompile "junit:junit:4.12"
+}
+
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlin_version"
+    }
+}
+
+apply plugin: "kotlin-spring"
+apply plugin: "org.springframework.boot"
+
+bootJar {
+    mainClass = "com.devexperts.usages.server.ServerKt"
+    launchScript {
+        included = true
+        properties 'logFilename': 'usages.log'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Main-Class': 'com.devexperts.usages.indexer.IndexerCliKt'
+    }
+}

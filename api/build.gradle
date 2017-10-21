@@ -1,0 +1,7 @@
+description = 'Internal API'
+dependencies {
+//    compile group: 'org.springframework', name: 'spring-web', version: '4.3.2.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-webflux:$spring_boot_version"
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.7.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.2'
+}
