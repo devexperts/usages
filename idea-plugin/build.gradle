@@ -1,0 +1,20 @@
+plugins {
+    id "org.jetbrains.intellij" version "0.2.16"
+}
+
+apply plugin: 'org.jetbrains.intellij'
+
+intellij {
+    version '2017.2.2' //IntelliJ IDEA 2017.2.2 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
+    pluginName 'Maven usages finder'
+    updateSinceUntilBuild false
+}
+
+dependencies {
+    compile project(':api')
+}
+
+jar {
+    // Create Uber JAR
+    from configurations.compile.collect { zipTree(it)}
+}

@@ -1,0 +1,61 @@
+<!--
+
+    Copyright (C) 2017 Devexperts LLC
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this program.  If not, see
+    <http://www.gnu.org/licenses/gpl-3.0.html>.
+
+-->
+<idea-plugin>
+    <id>com.devexperts.usages.idea-plugin</id>
+    <version>${version}</version>
+    <idea-version since-build="141.0"/>
+
+    <name>Maven usages finder</name>
+    <description>Provides an ability to find code usages in Maven repositories</description>
+    <vendor url="http://www.devexperts.com/">Devexperts, LLC</vendor>
+
+    <extensions defaultExtensionNs="com.intellij"/>
+
+    <project-components>
+        <component>
+            <implementation-class>com.devexperts.usages.idea.FindUsagesRequestConfigurationComponent
+            </implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.devexperts.usages.idea.PluginConfigurationComponent</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <action id="findUsagesRequest"
+                class="com.devexperts.usages.idea.FindUsagesRequestAction"
+                text="Find usages in Maven">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="StructureViewPopupMenu" anchor="last"/>
+            <keyboard-shortcut first-keystroke="alt F9" keymap="$default"/>
+        </action>
+        <action id="openUsagesPluginConfiguration"
+                class="com.devexperts.usages.idea.OpenPluginConfigurationAction"
+                text="Configure Usages plugin">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+        <action id="findUsagesRequestWithConfiguration"
+                class="com.devexperts.usages.idea.FindUsagesRequestWithConfigurationAction">
+            <keyboard-shortcut first-keystroke="ctrl alt shift F9" keymap="$default"/>
+        </action>
+    </actions>
+
+</idea-plugin>

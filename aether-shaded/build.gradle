@@ -1,0 +1,15 @@
+dependencies {
+    compile "org.apache.maven:maven-aether-provider:3.3.9"
+    compile "org.eclipse.aether:aether-api:$aether_version"
+    compile "org.eclipse.aether:aether-util:$aether_version"
+    compile "org.eclipse.aether:aether-transport-file:$aether_version"
+    compile "org.eclipse.aether:aether-transport-http:$aether_version"
+    compile "org.eclipse.aether:aether-connector-basic:$aether_version"
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+shadowJar {
+    relocate 'com.google', 'com.devexperts.usages.shaded.com.google'
+    relocate 'org.objectweb.asm', 'com.devexperts.usages.shaded.org.objectweb.asm'
+}
